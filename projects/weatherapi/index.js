@@ -3,6 +3,7 @@ $( document ).ready(function() {
   var isCelsius = true;
   var currentTemp = null;
   var weather = "Clear";
+  var weatherSummary = 'Clear';
   $.get("https://api.darksky.net/forecast/f7ab20b2e722f5b8da12df12f15a1d42/51.5,0.5",       function(data, status){
     console.log(data) ;
     json = data;
@@ -13,7 +14,7 @@ $( document ).ready(function() {
     currentTemp = json.currently.temperature;
     
     weather = json.currently.icon;
-    var weatherSummary = json.currently.summary;
+    weatherSummary = json.currently.summary;
     $(".city").html(json.timezone);
     $(".temp").html(currentTemp.toFixed(1) + "&deg C, " + weatherSummary) ;
     switch (weather){
@@ -43,7 +44,7 @@ $( document ).ready(function() {
     
     if(isCelsius){
       currentTemp = currentTemp * 1.8 + 32;
-      $(".temp").html(currentTemp.toFixed(1) + "&deg F, " + weather);
+      $(".temp").html(currentTemp.toFixed(1) + "&deg F, " + weatherSummarySummary);
       isCelsius = false ;
     }
     else{
