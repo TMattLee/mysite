@@ -1,0 +1,117 @@
+.page-container{
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  background-color: #555;
+}
+.item-group{
+  background-color: white;
+  margin: 10px auto 10px auto;
+}
+.title-bar{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 10px auto 0px auto;
+  width: 1000px;
+  
+}
+
+.title-name{
+  width: 800px;
+  margin: 0px auto
+}
+
+
+
+.title-bar-upper{
+  text-align: center;
+  display: flex;
+  width: 800px;
+  margin: 5px auto 0px auto;
+  
+}
+.pen-image{
+  width:          50px;
+  height:         50px;
+  display:        flex;
+  flex-direction: column;
+  
+}
+.tab-container{
+  display: flex;
+  flex-direction:row;
+  margin-left: auto;
+  margin-right: 110px;
+  margin-bottom: -5px;
+}
+
+.tab{
+  background-color: white;
+  margin: 5px;  
+  padding: 0px 5px 0px 5px ;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #fff;
+}
+
+h4{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 5px ;  
+}
+
+.body-container{
+  background-color: white;
+  height: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -2px;
+  width: 800px;
+  border-top: 1px solid #ccc;
+  border-radius: 10px;
+  
+}
+
+.active{
+  border-top: 2px solid orange;
+  margin-top: 3px;
+}
+.inactive{
+}
+.show-content{
+  background-color: red !important;
+}
+
+.hide-content{
+  display: none
+}
+
+.middle-name{
+  color: orange;
+}
+
+h5{
+  color: #ccc;
+  margin-left: 30px;
+}
+
+.tab-content{
+  padding: 20px;
+}
+.git-image{
+  width:     250px;
+  height:     250px;
+}
+
+.hacker-image{
+  width:        250px;
+  height:       250px;
+}
+
+.leet-image{
+  width:      250px;
+  height:     250px;
+}
