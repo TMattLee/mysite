@@ -1,0 +1,59 @@
+body{
+  background-color: #333;
+}
+
+.weather-box{
+  
+  width:600px;
+  height:400px;
+  
+  margin: 50px auto 50px auto;
+  background-color: cyan;
+}
+
+.text{
+  text-align:center;
+  color: white;
+}
+.title{
+  
+  text-align: center;
+  font-size: 4em;
+}
+.city{
+  
+}
+.country{
+  font-size: 2em !important;
+}
+
+.temp-container{
+  margin: 5px auto 5px auto;
+}
+
+.button-temp-change{
+  background-color: #FF5566;
+  width: 50px;
+  margin: 10px auto 10px auto;
+  border-radius: 5px;
+}
+.button-temp-change:hover{
+  background-color: #FFaaaa;
+  cursor: pointer;
+}
+
+.temp{
+  font-size: 3em;
+}
+.fc{
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.img-container{
+  
+  width: 120px;
+  height: 120px;
+  margin: 10px auto 10px auto;
+    
+}
