@@ -44,12 +44,12 @@ $( document ).ready(function() {
     
     if(isCelsius){
       currentTemp = currentTemp * 1.8 + 32;
-      $(".temp").html(currentTemp.toFixed(1) + "&deg F, " + weatherSummarySummary);
+      $(".temp").html(currentTemp.toFixed(1) + "&deg F, " + weatherSummary);
       isCelsius = false ;
     }
     else{
       currentTemp = (currentTemp - 32) / 1.8;
-      $(".temp").html(currentTemp.toFixed(1) + "&deg C, " + weather);
+      $(".temp").html(currentTemp.toFixed(1) + "&deg C, " + weatherSummary);
       isCelsius = true;
     }
   });
