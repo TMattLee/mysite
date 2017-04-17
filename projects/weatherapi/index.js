@@ -3,7 +3,8 @@ $( document ).ready(function() {
   var isCelsius = true;
   var currentTemp = null;
   var weather = "Clear";
-  $.get("https://api.darksky.net/forecast/f7ab20b2e722f5b8da12df12f15a1d42/51.5,0.5",       function(data, status){
+  $.get("https://api.darksky.net/forecast/f7ab20b2e722f5b8da12df12f15a1d42/51.5,0.5",       
+    function(data, status){
     console.log(data) ;
     json = data;
     /*var myMax = 20;
