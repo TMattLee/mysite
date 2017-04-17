@@ -29,7 +29,7 @@ $( document ).ready(function() {
         case "clear-day":
         $(".img-container").html('<img src="https://image.ibb.co/mg3bi5/clear_day_2x.png" alt="clear day 2x" border="0" />');
         break; 
-      case default:
+      default:
         $(".img-container").html('<img src="https://image.ibb.co/dgQp35/5a43da5a9f565929f17ea5eec6669acd.png" alt="5a43da5a9f565929f17ea5eec6669acd" border="0" />');
         break;         
     }
