@@ -1,0 +1,84 @@
+header{
+  background-color: #667;
+  text-align: center;
+  padding: 10px;
+  font-size: 3em;
+  font-family: Impact, Charcoal, sans-serif;
+  color: #eee;
+  
+}
+
+body{
+  font-family: sans-serif;
+}
+
+.search-button{
+  background-color: silver;
+  display: inline-block;
+  padding: 3px 5px 3px 5px;
+  border: solid 2px grey;
+  float: right;
+  margin: 2px;
+  
+}
+.search-button:hover{
+  cursor: pointer;
+}
+
+.body-left{
+  float: left;
+  margin: 10px;
+  color: white;
+  
+  background-color: #333333;
+  width:200px;
+  height: 20px;
+  text-align: center;
+  padding: 4px 0px 2px 0px;
+}
+
+.body-left:hover{
+  cursor: pointer;
+}
+
+.body-center{
+  display: inline-block;
+  background-color: grey;
+  width:800px;
+  height: 1110px;
+  margin: 10px;
+  box-shadow: 0px 5px 5px 5px #333;
+}
+
+.body-right{
+  display: inline-block;
+  float: right;
+  margin: 10px;
+}
+
+.display-box{
+  background-color: white;
+  width:600px;
+  height: 100px;
+  margin: 10px auto 10px auto;
+  box-shadow: 0px 2px 5px 2px #333;
+}
+
+.display-box:hover{
+  background-color: #ccc;
+  transition: 0.3s;
+}
+
+.wiki-title{
+  padding: 10px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.wiki-extract{
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+#term{
+}
