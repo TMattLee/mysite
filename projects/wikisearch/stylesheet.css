@@ -28,8 +28,7 @@ body{
 .body-left{
   float: left;
   margin: 10px;
-  color: white;
-  
+  color: white;  
   background-color: #333333;
   width:200px;
   text-align: center;
@@ -75,7 +74,7 @@ body{
 }
 
 .wiki-extract{
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px;
   font-family: sans-serif;
 }
 
