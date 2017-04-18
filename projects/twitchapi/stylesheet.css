@@ -1,0 +1,64 @@
+.body-center{
+  background-color: cyan;
+  width: 800px;
+  height: 900px;
+  margin: 10px auto 10px auto;
+  
+}
+
+.page-header{
+  color: white;
+  font-weight: bold;
+  width: 700px;
+  height: 125px;
+  margin: 10px auto 10px auto;
+  font-size: 6em;
+  text-align: center;
+  line-height: 125px;
+}
+
+#stream-container{
+  margin: 0px auto 0px auto;
+}
+
+.twitch-box{
+  background-color: white;
+  width: 700px;
+  height: 100px;
+  margin: 20px auto 20px auto;
+  cursor:pointer;
+}
+
+.channel-image{
+  
+  width: 100px;
+  height: 100px;
+}
+
+.channel-name{
+  color: white;
+  background-color: #33eeee;
+  line-height: 100px;
+  width: 500px;
+  padding-left: 10px;
+}
+
+.channel-status{
+  color: white;
+  background-color: #33eeee;
+  line-height: 100px;
+  width: 100px;
+  text-align: center;
+}
+
+.channel-status.online{
+  background-color: green;
+}
+
+.channel-status.offline{
+}
+
+.channel-status.unknown{
+  background-color: red;
+}
+
