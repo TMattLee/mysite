@@ -3,32 +3,48 @@
 
 var exp1 = /[\+\-\*\/]/;
 
-//var exp2 =/\d+[^\.]/;
-
 var exp2 = /[^\+|^\-|^\/|^\*]+/;
 
 var total = null;
 
-var displayValueArray = []
+var displayValueArray = [];
+var inputValueArray = ['0'];
+
+var hitEquals = false;
+var previousInput = 1;
+var inputBegin = true;
 
 class DisplayBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            input: inputValueArray.join(''),
             value: displayValueArray.join(''),
-        }        
+        };        
     }
     
     componentWillMount(){
-        displayValueArray.callback = (data) => {
+        displayValueArray.callback = () => {
             this.setState({
+                input: inputValueArray.join(''),
                 value: displayValueArray.join(''),
-            })
-        }
+            });
+        };
     }
     
     render(){
-        return <div style = {styles.displayBox}> {this.state.value} </div>;
+        return( 
+        <div style = {styles.displayBox}>
+            <div style = {styles.displayNumContainer}>
+                <div style = {styles.inputNum}>
+                    {this.state.input} 
+                </div>
+                <div style = {styles.displayNum}>
+                    {this.state.value} 
+                </div>
+            </div>
+        </div>
+        );
     }
 }
 
@@ -39,7 +55,8 @@ class CalcButton extends React.Component{
     }
  
     render(){
-        return(< div style = {styles.buttonStyle} 
+        return(
+        < div style = {styles.buttonStyle} 
             id = {"button" + this.props.buttonLabel}
             onClick = {this.logNum} > 
             {this.props.buttonLabel} 
@@ -47,14 +64,23 @@ class CalcButton extends React.Component{
     }
     
     logNum(){
+        
         var input = this.props.buttonLabel;
-        var nnnn = 35;
-        if(displayValueArray.length <20 ){
+        
+        if(displayValueArray.length < 20 ){
+            if(inputBegin){
+                inputValueArray.length = 0; 
+                inputBegin = false;
+            }
             var endChar = displayValueArray[displayValueArray.length-1];
             switch(input){
             
                 case "AC":
                     displayValueArray.length = 0;
+                    inputValueArray.length = 0;
+                    inputValueArray.push(0);
+                    inputBegin = true;
+                    total = 0;
                     break;
                 
                 case '=':
@@ -63,32 +89,81 @@ class CalcButton extends React.Component{
                     }
                     this.calcResult();
                     displayValueArray.length = 0;
-                    var val = total.toFixed(2).toString().split('');
+                    inputValueArray.length = 0;
                     
+                    var val = 0;
+                    
+                    if(total % 1 === 0){
+                        val = total.toString().split('');
+                    }
+                    else{
+                        val = total.toFixed(3).toString().split('');
+                    }
+                    console.log('val = ', val);
                     for (var ie = 0; ie < val.length; ie++){
-                        if (val[ie] === '.'){
+                        if (val[ie] === '.' || val[ie] === '-'){
                             displayValueArray.push(val[ie]);
+                            inputValueArray.push(val[ie]);
                         }
                         else{
                             displayValueArray.push(parseFloat(val[ie]));
+                            inputValueArray.push(val[ie]);
                         }
 
                     }
+                    hitEquals = true;
                     break;
                     
                 default:
+                    console.log( typeof(endChar) );
                     
-                    console.log(typeof(endChar));
-                    if(typeof(endChar)  === 'string' && typeof(input)  === 'string'  ){
+                    if(displayValueArray.length === 0 ){
+                        if(typeof(input) === 'number'){
+                            inputValueArray.push(input);
+                            displayValueArray.push(input);
+                        }
+                        else{
+                            inputValueArray.push(0);
+                            inputBegin = true;
+                        }
+
+                    }
+                    else if( typeof(endChar)  === 'string' && typeof(input)  === 'string' ){
                         displayValueArray[displayValueArray.length-1] = input;
                     }
                     else{
-                        displayValueArray.push(this.props.buttonLabel);
+                        
+                        // If equals sign was hit then reset display when number is input.
+                        if(hitEquals && typeof(input) === 'number'){
+                            displayValueArray.length = 0;
+                            displayValueArray.push(input);
+                            inputValueArray.length = 0;
+                            inputValueArray.push(input);
+                            hitEquals = false;
+                        }
+                        else{
+                            if( typeof(previousInput) === 'string' &&
+                                typeof(input) === 'number' && 
+                                previousInput !== '.' ){
+                                inputValueArray.length = 0;
+                                inputValueArray.push(input);
+                                
+                            }
+                            else{
+                                if(typeof(input) === 'number' || input === '.'){
+                                    inputValueArray.push(input);
+                                }
+                            }
+                            displayValueArray.push(input);
+                            hitEquals = false;
+                        }
+
                     }
     
                     break;                
-            }        
-
+            }
+            
+            previousInput = input;
             displayValueArray.callback(null);
             console.log(displayValueArray);
         }
@@ -111,25 +186,32 @@ class CalcButton extends React.Component{
         var values = valueArray.split(exp1);
         var ops = valueArray.split(exp2);
         ops.pop();
+        if(displayValueArray[0] === '-'){
+    	    total = parseFloat(values[0]);
+    	    values.shift();
+    	    values[0] = (values[0] * -1).toString();
+    	    ops[0] = "";
+
+    	}
         
-        console.log(values);
+        console.log(values,ops);
         for(var i = 0; i < values.length; i++){          	
           	switch(ops[i]){
-            	case "":
-              	total = parseFloat(values[0]);
-                break;
+                case "":
+              	    total = parseFloat(values[0]);
+              	    break;
             	case '+':
-              	total += parseFloat(values[i]);
-                break;
-              case '-':
+                  	total += parseFloat(values[i]);
+                    break;
+                case '-':
                   total -= parseFloat(values[i]);
                   break;
-              case '*':
-              	total *= parseFloat(values[i]);
-                break;
-              case '/':
-              	total /= parseFloat(values[i]);
-                break;
+                case '*':
+                  	total *= parseFloat(values[i]);
+                    break;
+                case '/':
+                  	total /= parseFloat(values[i]);
+                    break;
             }
             console.log(total);
         }
@@ -197,6 +279,21 @@ const styles = {
     app:{
         
     },
+    inputNum:{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      fontSize: '1.1em',
+    },
+    displayNum:{
+      color: '#555',
+      fontSize: '0.9em',
+    },
+    
+    displayNumContainer:{
+      display: 'flex',
+      flexDirection: 'column',
+    },
     
     buttonStyle:{
         display: 'flex',
@@ -218,23 +315,24 @@ const styles = {
     numGroup:{
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'space-between',
     },
     
     displayBox:{
         display: 'flex',
         flexDirection: 'row',
         width: '220px',
-        height: '30px',
+        height: '40px',
         backgroundColor: 'silver',
         justifyContent: 'flex-end',
-        alignItems: 'center',
+        alignItems: 'space-between',
         margin: '5px',
         padding: '5px',
     },
     
     calc:{
         margin: '20px auto 20px auto',
-        height: '350px',
+        height: '360px',
         width: '240px',
         padding: '20px 10px 10px 10px',
         backgroundColor: 'darkgrey',
