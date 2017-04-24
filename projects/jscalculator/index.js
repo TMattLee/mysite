@@ -63,7 +63,7 @@ class CalcButton extends React.Component{
                     displayValueArray.length = 0;
                     var val = total.toString().split('');
                     for (var ie = 0; ie < val.length; ie++){
-                        displayValueArray.push(val[ie]);
+                        displayValueArray.push(parseFloat(val[ie]));
                     }
                     break;
                     
