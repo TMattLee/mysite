@@ -263,10 +263,18 @@ class NumberButtons extends React.Component{
 class CalculatorApp extends React.Component{
     render(){
         return (
-            <div style = {styles.calc}>
-                <div style={styles.app} >
-                    <DisplayBox />
-                    <NumberButtons />
+            <div>
+                <div style = {styles.calc}>
+                    <div style={styles.app} >
+                        <DisplayBox />
+                        <NumberButtons />
+                    </div>
+                </div>
+                <div style = {styles.footer}>
+                    Built with ReactJS by <br/>
+                    <a href="https://tmattlee.github.io" style={{ textDecoration: 'none' }}>
+                        Matt Lee<
+                    /a> 
                 </div>
             </div>
         );
@@ -284,6 +292,7 @@ const styles = {
       flexDirection: 'row',
       justifyContent: 'flex-end',
       fontSize: '1.1em',
+      fontWeight: 'bold',
     },
     displayNum:{
       color: '#555',
@@ -303,6 +312,8 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         margin: '5px',
+        fontWeight: 'bold',
+        border: 'solid 2px black',
         
     },
     
@@ -328,14 +339,21 @@ const styles = {
         alignItems: 'space-between',
         margin: '5px',
         padding: '5px',
+        border: 'solid 2px black',
     },
     
     calc:{
-        margin: '20px auto 20px auto',
-        height: '360px',
+        margin: '70px auto 20px auto',
+        height: '390px',
         width: '240px',
         padding: '20px 10px 10px 10px',
-        backgroundColor: 'darkgrey',
+        backgroundColor: 'dimgrey',
+        border: 'solid 2px black',
+    },
+    footer:{
+        fontSize: '0.8em',
+        textAlign: 'center',
+        color: '#555',
     }
     
 };
