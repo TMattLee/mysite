@@ -314,6 +314,7 @@ const styles = {
         margin: '5px',
         fontWeight: 'bold',
         border: 'solid 2px black',
+        cursor: 'pointer',
         
     },
     
