@@ -3,7 +3,9 @@
 
 var exp1 = /[\+\-\*\/]/;
 
-var exp2 =/\d+/;
+//var exp2 =/\d+[^\.]/;
+
+var exp2 = /[^\+|^\-|^\/|^\*]+/;
 
 var total = null;
 
@@ -61,9 +63,16 @@ class CalcButton extends React.Component{
                     }
                     this.calcResult();
                     displayValueArray.length = 0;
-                    var val = total.toString().split('');
+                    var val = total.toFixed(2).toString().split('');
+                    
                     for (var ie = 0; ie < val.length; ie++){
-                        displayValueArray.push(parseFloat(val[ie]));
+                        if (val[ie] === '.'){
+                            displayValueArray.push(val[ie]);
+                        }
+                        else{
+                            displayValueArray.push(parseFloat(val[ie]));
+                        }
+
                     }
                     break;
                     
