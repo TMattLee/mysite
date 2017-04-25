@@ -15,5 +15,6 @@ $(document).ready(function(){
         var win = window.open(url, '_blank');
         win.focus();
     });
+  $('html').find('body').css("background-color", "red !important");
 
 });
