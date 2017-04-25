@@ -1,3 +1,4 @@
+/*eslint-env browser */
 var codeCampStreamStatus = null;
 
 var channels = ['freecodecamp','comster404','ESL_SC2', 'OgamingSC2', 'cretetion', 'curse'];
