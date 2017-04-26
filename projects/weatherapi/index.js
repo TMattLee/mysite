@@ -8,10 +8,7 @@ $( document ).ready(function() {
     function(data, status){
       console.log(data) ;
       json = data;
-      /*var myMax = 20;
-      var myMin = 0;
-      var jsonNum = Math.floor(Math.random() * (myMax - myMin + 1) + myMin);
-      console.log(json.list[jsonNum]);*/
+
       currentTemp = json.currently.temperature;
 
       weather = json.currently.icon;
@@ -38,7 +35,7 @@ $( document ).ready(function() {
   }, "jsonp");
   
   $(".button-temp-change").on("click", function(){
-    console.log("clicked");
+    //console.log("clicked");
     
     if(isCelsius){
       currentTemp = currentTemp * 1.8 + 32;

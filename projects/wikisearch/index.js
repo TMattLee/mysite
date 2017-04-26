@@ -10,10 +10,10 @@ $( document ).ready(function() {
 
     $(".search-button").on("click", function(){
       nameValue = document.getElementById("term").value
-      console.log(nameValue);
+      //console.log(nameValue);
       var cb = '&callback=?';
       var searchUrl = endpoint + actions + nameValue + cb;
-      console.log(searchUrl);
+      //console.log(searchUrl);
       $.ajax({
         type: "GET",
         url: searchUrl,
@@ -21,15 +21,15 @@ $( document ).ready(function() {
         async: false,
         dataType: "json",
         success: function (data, textStatus, jqXHR) {
-          console.log('success');
-          console.log(data);
+          //console.log('success');
+          //console.log(data);
           var htmlString = '';
           $.each(data.query.pages, function(index, value){
               var pageid = value.pageid;
               var title = value.title;
               var extract = '';
               var pageUrl = page + pageid;
-              console.log(pageUrl);
+              //console.log(pageUrl);
               if(value.hasOwnProperty("extract")){
                 extract = value.extract               }
             htmlString += `<a ><div class = "display-box" href="`+ pageUrl + `">
@@ -45,23 +45,16 @@ $( document ).ready(function() {
         }
     });
   });
-  
-  /*$().on('click',function(){
-    console.log('click');
-    var addressValue = $(this).attr("href");
-    
-    window.open(addressValue);
-  });*/
-  
+
   $( ".body-center" ).on( "click", "div[href^='http']", function( event ) {
     var outbound_link = $(this).attr("href")
-    console.log(outbound_link);
+    //console.log(outbound_link);
     
     window.open(outbound_link);
   });
   
   $(".body-left").on("click", function(){
     window.open("https://en.wikipedia.org/wiki/Special:Random");
-  })
+  });
 });
   

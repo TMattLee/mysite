@@ -9,7 +9,7 @@ function loadTwitchChannels(){
     var channelEndpoint = 'https://wind-bow.gomix.me/twitch-api/channels/'
     var channelUrl = channelEndpoint + channel;
     $.get(channelUrl, function(data,status) {
-      console.log(data);
+      //console.log(data);
       
       var twitchStreamStatus = null;
       if(data.status == 404){
@@ -30,7 +30,7 @@ function loadTwitchChannels(){
         var streamUrl = streamEndpoint + channel;
         var streamStatus = null;
         $.get(streamUrl, function(data){
-          console.log(data);
+          //console.log(data);
           var gamePlayed = '';
           if(data.stream == null){
             streamStatus = "Offline";
@@ -70,7 +70,7 @@ $(document).ready(function(){
   loadTwitchChannels();
   $( "#stream-container" ).on( "click", "div[href^='http']", function( event ) {
     var outbound_link = $(this).attr("href")
-    console.log(outbound_link);
+    //console.log(outbound_link);
     
     window.open(outbound_link, '_blank');
   });
