@@ -18,7 +18,7 @@ class App extends React.Component {
         style = {{textDecoration:'none',color: 'orange'}}>Matt Lee</a>
       </div>
       <div style = {styles.footer}>
-        <a href="https://tmattlee.github.io/projects/pomodoro/app/"
+        <a href="https://github.com/TMattLee/tmattlee.github.io/tree/master/projects/pomodoro"
         style = {{textDecoration:'none',color: 'orange'}}>
           View Source
         </a>
