@@ -5,6 +5,7 @@ import SessionButton from './session-button.jsx';
 import BreakButton from './break-button.jsx';
 
 
+
 let displayMins = '';
 let displaySecs = '';
 let timerColor = '#acc';
@@ -43,6 +44,7 @@ class Pomodoro extends React.Component{
     this.updateTimer = this.updateTimer.bind(this);
     this.changeCount = this.changeCount.bind(this);
     this.workToBreak = this.workToBreak.bind(this);
+    this.playSound = this.playSound.bind(this);
   }
   componentWillMount(){   
     
@@ -52,7 +54,14 @@ class Pomodoro extends React.Component{
   }
   
   componentDidMount(){
-      
+  
+  }
+  playSound(){
+    var audio = document.createElement("audio");
+    if (audio !== null && audio.canPlayType && audio.canPlayType("audio/mpeg")){
+      audio.src = "./ping.mp3";
+      audio.play();
+    }
   }
  
   startStop(){
@@ -61,7 +70,7 @@ class Pomodoro extends React.Component{
         started: false,
         stopped: true,
       });
-      clearInterval(this.stopwatch);
+      clearInterval(this.stopwatch);      
     }
     else{
       this.setState({
@@ -75,12 +84,17 @@ class Pomodoro extends React.Component{
   countDown(){
     if(timer > 0){
       timer -=1;
+      
       this.updateTimer();   
       this.updateOverlay();
       let outputDisplay = displayMins + ':' + displaySecs;
-      console.log(outputDisplay);
+      if(timer === 0){
+        this.playSound(); 
+      }
+      //console.log(outputDisplay);
     }
     else{
+           
       this.workToBreak();
       this.updateOverlay();
     }
@@ -96,7 +110,7 @@ class Pomodoro extends React.Component{
         mins: this.state.breakTime < 10 ? '0'+ this.state.breakTime.toString() : this.state.breakTime.toString() ,
         output: 'BREAK TIME!',
       });       
-      
+
     }
     else{
       timer = workTimerStart;
@@ -107,14 +121,14 @@ class Pomodoro extends React.Component{
         mins: this.state.workTime < 10 ? '0'+ this.state.workTime.toString() : this.state.workTime.toString() ,
         output: 'WORK TIME!',
         overlay: this.getOverlay(),
-      });
-      
+      });      
+
     }
   }
   
   changeCount(sign, wt, type){
     var data = wt;
-    console.log(wt);
+    //console.log(wt);
     if(this.state.stopped){
       if(type === 'w'){
         if( sign === '-' && wt > 1){
@@ -173,20 +187,20 @@ class Pomodoro extends React.Component{
   }
   
   updateOverlay(){
-    console.log(this.state.breakTime, timer);
+    //console.log(this.state.breakTime, timer);
     if(this.state.isWorkTime){        
       overlayTick = Math.round(100*(workTimerStart + 1 - timer)/(workTimerStart)).toString();   
       this.setState({
         overlay: this.getOverlay(),
       });
-      console.log('here');
+      //console.log('here');
     }
     else{        
       overlayTick = Math.round(100*(breakTimerStart + 1 - timer)/(breakTimerStart)).toString();      
       this.setState({
         overlay: this.getOverlay(),
       });
-      console.log('there');
+      //console.log('there');
     }
   }
   
@@ -206,6 +220,7 @@ class Pomodoro extends React.Component{
   
   render(){
     return( <div>
+      <audio ref="audio" src ="./ping.mp3"></audio>
       <div style = {styles.message}>
         {this.state.output}
       </div>
