@@ -8,7 +8,7 @@ class App extends React.Component{
       <div style = {styles.text} > SIMON </div>
       <SimonBoard />
       <div style = {styles.footer}>
-        <a href="https://tmattlee.github.io/projects/simon"
+        <a href="https://github.com/TMattLee/tmattlee.github.io/tree/master/projects/simon"
         style = {{textDecoration:'none',color: 'orange'}}>
           View Source
         </a>
