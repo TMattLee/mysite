@@ -363,8 +363,42 @@ class TicTacToeBoard extends React.Component{
   }
   
   doEdgeLogic(){
-    // random for now
-    this.computerSelectRandomSquare();
+   
+    if(this.humansFirstMove === 5 || this.humansFirstMove === 7){
+      if(!(8 in this.selected)){
+        this.computerSelect(8);      
+      }
+      else if(!(4 in this.selected)){
+        this.computerSelect(4);      
+      }
+      else if(!(2 in this.selected)){
+        this.computerSelect(2);      
+      }
+      else if(!(0 in this.selected)){
+        this.computerSelect(0);      
+      }
+      else{
+        this.computerSelectRandomSquare();
+      }
+    }
+    else{
+      
+      if(!(0 in this.selected)){
+        this.computerSelect(0); 
+      }
+      else if(!(4 in this.selected)){
+        this.computerSelect(4);      
+      }
+      else if(!(6 in this.selected)){
+        this.computerSelect(6);      
+      }
+      else if(!(8 in this.selected)){
+        this.computerSelect(8);      
+      }      
+      else{
+        this.computerSelectRandomSquare();
+      }
+    }   
   }
   
   computerSelectRandomSquare(){
