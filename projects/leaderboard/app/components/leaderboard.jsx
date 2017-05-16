@@ -177,7 +177,6 @@ const styles = {
     alignItems:       'center',
     width:            '400px',
     height:           '50px',
-    fontSize:         '1.1em',
     fontFamily:       fontFamily,
   },
   userPic:{
@@ -193,7 +192,6 @@ const styles = {
     alignItems:       'center',
     width:            '50px',
     height:           '50px',
-    fontSize:         '1.1em',
     fontFamily:       fontFamily,
   },
   userRecent:{
@@ -202,7 +200,6 @@ const styles = {
     alignItems:       'center',
     width:            '100px',
     height:           '50px',
-    fontSize:         '1.1em',
     fontFamily:       fontFamily,
   },
   userAllTime:{
@@ -211,7 +208,6 @@ const styles = {
     alignItems:       'center',
     width:            '100px',
     height:           '50px',
-    fontSize:         '1.1em',
     fontFamily:       fontFamily,
   }
 };
