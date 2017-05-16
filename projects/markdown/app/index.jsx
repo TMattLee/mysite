@@ -4,7 +4,7 @@ import Markdown from './components/markdown.jsx';
 
 class App extends React.Component{
   render(){
-    return (<div>
+    return (<div style = {styles.main}>
       <div style = {styles.title}>
         Markdown Previewer
       </div>
@@ -25,10 +25,10 @@ class App extends React.Component{
 
 const color = '#333';
 const styles = {
-  body:{
-    width:            '1200px',
-    height:            '760px',
-    
+  main:{
+    display:          'flex',
+    flexDirection:    'column',
+    alignItems:       'center',
   },
   title:{
     color:            color,

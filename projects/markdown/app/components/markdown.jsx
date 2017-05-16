@@ -58,7 +58,6 @@ const styles = {
   markdownContainer:{
     display:          'flex',
     flexDirection:    'row',
-    width:            '1200px',
     height:           '800px',
     
     alignItems:       'center',
