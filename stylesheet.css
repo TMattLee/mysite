@@ -146,6 +146,21 @@ h5{
     border: solid 2px #ccc;
     
 }
+
+
+.image-container{
+    display: inline-block;
+    width: 330px;
+    cursor: pointer;
+    position: relative;
+    padding-top: 230px;
+    overflow: hidden;
+    text-align: center;
+    margin: 20px;
+    border: solid 2px #ccc;
+    
+}
+
 .cover-link{
     position: absolute;
     width: 330px;
