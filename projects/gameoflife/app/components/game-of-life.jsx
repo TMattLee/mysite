@@ -106,7 +106,6 @@ export default class GameOfLife extends React.Component{
   
   swapColors(i,j){
     if(!this.isRunning){
-      console.log('swap ', i);
       if( this.gameArr[i][j] === 1){
         this.gameArr[i][j] = 0;
         this.updateArr();
@@ -127,11 +126,9 @@ export default class GameOfLife extends React.Component{
         let newArr = []
         for(let j = 0; j < this.size*2+2; j++){
           newArr.push(0);
-          console.log('loop');
         }
         this.gameArr.push(newArr);
       }
-      console.log(this.gameArr, 'lame',n);
       this.assignRandom();
       this.start();
       
@@ -216,7 +213,6 @@ export default class GameOfLife extends React.Component{
       for(let j = 1; j < this.gameArr[i].length - 1; j++){
         row += arr[i][j].toString() + ' ';
       }
-      console.log('row ', i, ' ', row);
     }
   }
   
@@ -231,7 +227,7 @@ export default class GameOfLife extends React.Component{
   checkAlive(arr){
     let total = 0;
     for(let i = 1; i <  this.gameArr.length - 1; i++){
-      for(let j = 1; j <  this.gameArr.length - 1; j++){
+      for(let j = 1; j <  this.gameArr[i].length - 1; j++){
         if(arr[i][j] === 1){
           return;
         }
