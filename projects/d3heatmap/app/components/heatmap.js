@@ -33,17 +33,21 @@ class HeatMap extends React.Component{
     const baseTemperature = this.props.data.baseTemperature;
     const data = this.props.data.monthlyVariance;
     
+    
+    // Compute resulting temperature for each entry
     for(let i = 0; i < data.length; i++){
       data[i].temp = baseTemperature + data[i].variance;
     }
 
     const dataLength = data.length;
-    const node = this.node;
+    
+    // Define Graph area
     const margin = {top: 20, right: 100, bottom: 30, left: 100};
     const width = this.props.sizeX - margin.left - margin.right;
     const height = this.props.sizeY - margin.top - margin.bottom;
     const graphHeight = height - 50;
     
+    // Obtain min and max values for data domains
     const timeMin = min(data, (d) => {
       return d.year;
     });
@@ -63,6 +67,7 @@ class HeatMap extends React.Component{
     const dataMax = 12;
     const cellSize = 30;
     
+    // Process range for a given input
     const xScale = scaleLinear()
       .domain([timeMin, timeMax])
       .range([0,width]);
@@ -75,6 +80,7 @@ class HeatMap extends React.Component{
       .domain([tempMin,tempMax])
       .range(this.colors)
     
+    // Create customizable tooltip
     const tooltip = select('body')
       .append('div')
       .style('position', 'absolute')
@@ -86,25 +92,29 @@ class HeatMap extends React.Component{
       .style('font-size', '0.9em')
       .style('font-family', 'Sans-Serif')
       .style('box-shadow', '2px 2px 20px #222');
-      
+    
+    // Define chart
     const chart = select('.chart')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-      
+    
+    // Define Axis
     const xAxis = axisBottom(xScale)
       .ticks(20)
       .tickFormat(format('d'));
   
     const yAxis = axisLeft(yScale);
-      
+    
+    
+    // Append bars to chart
     const bars = chart.selectAll('.bar')
       .data(data)
       .enter()
       .append('rect')
         .attr('class', 'bar')
-        .style('fill', (d) => {
+        .style('fill', (d) => { // fills color based on a given temperature
           return colorScale(d.temp);
         })
         .attr('x', 
@@ -119,6 +129,7 @@ class HeatMap extends React.Component{
         .attr('width', 4)
         .on('mouseover', (d,i) => {
           
+          // Show tool tip on mouseover
           const rect = select(event.target);
           
           tooltip.transition()
@@ -140,6 +151,7 @@ class HeatMap extends React.Component{
         })
         .on('mouseout', (d) => {
           
+          // Hides tooltip
           let rect = select(event.target);
           
           tooltip.transition()
@@ -177,7 +189,8 @@ class HeatMap extends React.Component{
       .attr("y", graphHeight + graphHeight/12 + 37)
       .style('font-family','Sans-serif')
       .style('font-size','0.7em');
-      
+    
+    // Displays chart axis
     chart.append("g")
       .attr("class", "xAxis")
       .attr("transform", "translate(0," + (graphHeight + 2 + (graphHeight/12)/2).toString() + ")")
