@@ -116,9 +116,6 @@ class ForceMap extends React.Component{
       .force('x', forceX())
       .force('y', forceY())
       .force('center', forceCenter(width / 2, graphHeight / 2))
-        /*.attr('class', (d) =>{
-          return 'flag flag-' + d.code;
-        })*/
         .on('tick', () => {
           nodeElements
             .attr('x', node => node.x)
