@@ -38,14 +38,12 @@
   height:         50px;
   display:        flex;
   flex-direction: column;
-  
+  z-index:        1;
 }
 .tab-container{
   display: flex;
   flex-direction:row;
-  margin-left: auto;
-  margin-right: 110px;
-  margin-bottom: -5px;
+  margin:       15px auto -5px auto;
 }
 
 .tab{
@@ -63,6 +61,7 @@ h4{
   flex-direction: column;
   align-items: center;
   margin: auto 5px ;  
+  z-index:    1;
 }
 
 .body-container{
@@ -140,8 +139,6 @@ h5{
     left: 0;
     margin-top: 20px;
     margin-left: 15px;
-   
-
 }
 
 
@@ -189,4 +186,14 @@ h5{
 .frame-container:hover{
     background-color:grey;
     opacity: 0.75;
+}
+
+.thickline {
+    position: absolute;
+    width: 1000px;
+    height: 27px;
+    background-color: #ababab;
+    top: 37px;
+    left: 292px;
+    z-index: 0;
 }
